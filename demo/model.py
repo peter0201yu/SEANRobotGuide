@@ -61,7 +61,7 @@ class CNN(nn.Module):
         return self.fc2(self.dropout(F.relu(self.fc1(output))))
    
 
-def prepare_training_data(batch, batchsize=32, include_sdf=False):
+def prepare_training_data(batch, batchsize=32, include_sdf=False, device="cuda:0"):
     map_tensor = batch["map_tensor"].unsqueeze(1).to(device)
     sdf_tensor = batch["sdf_data"].unsqueeze(1).to(device)
     expert_traj = batch["expert_trajectory"].to(device)
